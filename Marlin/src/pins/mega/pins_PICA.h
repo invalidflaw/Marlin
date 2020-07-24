@@ -90,7 +90,7 @@
 //
 #define TEMP_0_PIN                             9  // Analog Input
 #define TEMP_1_PIN                            10
-#define TEMP_BED_PIN                          10
+#define TEMP_BED_PIN                          11  //changed for dual extruder
 #define TEMP_2_PIN                            11
 #define TEMP_3_PIN                            12
 

@@ -739,7 +739,7 @@
 // By default pololu step drivers require an active high signal. However, some high power drivers require an active low signal as step.
 #define INVERT_X_STEP_PIN false
 #define INVERT_Y_STEP_PIN false
-#define INVERT_Z_STEP_PIN false
+#define INVERT_Z_STEP_PIN true
 #define INVERT_E_STEP_PIN false
 
 // Default stepper release if idle. Set to 0 to deactivate.
@@ -1283,9 +1283,9 @@
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
   #define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
   //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
-  //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
-  //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
-  //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
+  #define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
+  #define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
+  //#defifne STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
   //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
   #define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
@@ -1831,7 +1831,7 @@
  */
 #if EXTRUDERS > 1
   // Z raise distance for tool-change, as needed for some extruders
-  #define TOOLCHANGE_ZRAISE     2  // (mm)
+  #define TOOLCHANGE_ZRAISE     0  // (mm)
   //#define TOOLCHANGE_NO_RETURN   // Never return to the previous position on tool-change
   #if ENABLED(TOOLCHANGE_NO_RETURN)
     //#define EVENT_GCODE_AFTER_TOOLCHANGE "G12X"   // G-code to run after tool-change is complete
@@ -2040,7 +2040,7 @@
  */
 #if HAS_TRINAMIC_CONFIG
 
-  #define HOLD_MULTIPLIER    0.4  // Scales down the holding current from run current
+  #define HOLD_MULTIPLIER    0.3  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
@@ -2167,15 +2167,15 @@
    * Override default SPI pins for TMC2130, TMC2160, TMC2660, TMC5130 and TMC5160 drivers here.
    * The default pins can be found in your board's pins file.
    */
-  #define X_CS_PIN             4 
-  #define Y_CS_PIN             3
-  #define Z_CS_PIN             5
+  #define X_CS_PIN             5 
+  #define Y_CS_PIN             4
+  #define Z_CS_PIN             3
   //#define X2_CS_PIN         -1
   //#define Y2_CS_PIN         -1
   //#define Z2_CS_PIN         -1
   //#define Z3_CS_PIN         -1
-  #define E0_CS_PIN            15//X_MAX_PIN
-  #define E1_CS_PIN            17//Y_MAX_PIN
+  #define E0_CS_PIN            17//X_MAX_PIN
+  #define E1_CS_PIN            22//Y_MAX_PIN
   //#define E2_CS_PIN         -1
   //#define E3_CS_PIN         -1
   //#define E4_CS_PIN         -1
@@ -2237,7 +2237,7 @@
    */
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
-  #define STEALTHCHOP_E
+  //#define STEALTHCHOP_E
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -2253,7 +2253,7 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_PRUSAMK3_24V
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V
 
   /**
    * Monitor Trinamic drivers for error conditions,
@@ -2331,7 +2331,7 @@
     #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
     #define Y_STALL_SENSITIVITY  0
     //#define Z_STALL_SENSITIVITY  8
-    #define SPI_ENDSTOPS              // TMC2130 only
+    //#define SPI_ENDSTOPS              // TMC2130 only
     #define IMPROVE_HOMING_RELIABILITY
   #endif
 
