@@ -17,7 +17,7 @@
  *   GNU General Public License for more details.                           *
  *                                                                          *
  *   To view a copy of the GNU General Public License, go to the following  *
- *   location: <https://www.gnu.org/licenses/>.                              *
+ *   location: <http://www.gnu.org/licenses/>.                              *
  ****************************************************************************/
 
 #include "../config.h"
@@ -114,8 +114,7 @@ void FilesScreen::drawFileList() {
   for(uint8_t i = 0; i < files_per_page; i++, fileIndex++) {
     if (files.seek(fileIndex)) {
       drawFileButton(files.filename(), getTagForLine(i), files.isDir(), false);
-    }
-    else {
+    } else {
       break;
     }
   }
